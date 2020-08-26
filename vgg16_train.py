@@ -60,7 +60,7 @@ def create_model():
 
 
 # train the model
-def train_model(train_data):
+def train_model(model, train_data):
     # select to train on cpu
     with tf.device('/CPU:0'):
         model.fit(train_data,epochs = 3)
@@ -69,7 +69,7 @@ def train_model(train_data):
     return model
 
 # predict on test data
-def predict_model()model:
+def predict_model(model, test_data):
     model.predict(test_data, steps=5)
     return
     
@@ -80,9 +80,9 @@ def VGG16():
     # generate and compile the model
     model = create_model()
     # train the model
-    model = train_model(train_data)
+    model = train_model(model, train_data)
     # make predictions on test data 
-    predict_model(model)
+    predict_model(model, test_data)
     
     
 VGG16()
