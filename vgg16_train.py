@@ -1,9 +1,11 @@
 from tensorflow.keras.preprocessing import image
+from tensorflow.keras.metrics import top_k_categorical_accuracy
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras import layers
 from tensorflow.keras import Model
 from keras.metrics import top_k_categorical_accuracy
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, ModelCheckpoint
+from tensorflow.keras.models import save_model
 from tensorflow import keras
 from tensorflow.keras.optimizers import Adam
 import tensorflow as tf
@@ -69,7 +71,7 @@ def create_model():
     model = Model(inputs=inputs, outputs=output)
     # compile model
     model.compile(optimizer = Adam(lr=LEARNING_RATE), 
-                   loss = 'categorical_crossentropy',
+                   loss ='categorical_crossentropy',
                    metrics = ['accuracy'])
     # get model summary
     model.summary()
